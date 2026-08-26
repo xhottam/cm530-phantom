@@ -113,7 +113,7 @@ void BioloidControllerEx_readPose() {
 		TxD_Dec_U16(pose_[i]);
 		PrintString("\n");
 #endif
-		mDelay(25);
+		mDelay(5);
 	}
 }
 /* write pose out to servos using sync write. */

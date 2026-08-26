@@ -255,7 +255,7 @@ u8 pc_rx_check_odroid_virtualCommander(void)
 #endif
 
 			// No sumo extra al checksum see esploraBioloid.ino
-            if (checksum == (255 - (right_V_Odroid+right_H_Odroid+left_V_Odroid+left_H_Odroid+buttons_Odroid)%256)){        	  //if (checksum == (255 - (gbRcvPacketOdroid[2]+gbRcvPacketOdroid[3]+gbRcvPacketOdroid[4]+gbRcvPacketOdroid[5]+gbRcvPacketOdroid[6])%256)){
+            if (checksum == (255 - (right_V_Odroid+right_H_Odroid+left_V_Odroid+left_H_Odroid+buttons_Odroid) % 256)){        	  //if (checksum == (255 - (gbRcvPacketOdroid[2]+gbRcvPacketOdroid[3]+gbRcvPacketOdroid[4]+gbRcvPacketOdroid[5]+gbRcvPacketOdroid[6])%256)){
 
 
 				 gbRcvFlagOdroid = 1;

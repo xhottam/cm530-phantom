@@ -204,7 +204,7 @@ void dxl_txrx_packet(void) {
 	dxl_clear_statpkt();
 	do {
 		dxl_rx_packet();
-		uDelay(50);
+		//uDelay(50);
 	} while (gbCommStatus & DXL_RXWAITING);
 
 #ifdef DEBUG_DYNAMIXEL

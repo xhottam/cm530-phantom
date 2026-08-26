@@ -1,5 +1,5 @@
 #COMPILE_OPTS = -mcpu=cortex-m3 -mthumb -Wall -pedantic -g -Os -fno-common -msoft-float 
-COMPILE_OPTS = -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common 
+COMPILE_OPTS = -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common -ffunction-sections -fdata-sections
 INCLUDE_DIRS = -I. -Istm32f10x_lib/inc -ICM530_HW/inc -ICM530_APP/inc
 #INCLUDE_DIRS = -I.
 LIBRARY_DIRS = -Lstm32f10x_lib

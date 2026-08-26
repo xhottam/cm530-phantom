@@ -666,7 +666,7 @@ int main(void) {
 					lTimeWaitEnd = lTimerStart + PrevServoMoveTime;
 #ifdef MILLIS
 					PrintString("Barebones lTimeWaitEnd ");
-					Printu32d(lTimeWaitEnd);km
+					Printu32d(lTimeWaitEnd);
 					PrintString("\n");
 #endif
 					//DebugWrite(A1, HIGH);
@@ -686,7 +686,7 @@ int main(void) {
 				CommitServoDriver(ServoMoveTime);
 			} else {
 				//Turn the bot off - May need to add ajust here...
-				if (g_InControlState.fPrev_RobotOn || (AllDown = 0)) {
+				if (g_InControlState.fPrev_RobotOn || (AllDown == 0)) {
 					ServoMoveTime = 600;
 					StartUpdateServos();
 					CommitServoDriver(ServoMoveTime);
