@@ -67,6 +67,26 @@ cm530-phantom-main/
 
 ## 3. Hardware CM530 — Inicialización
 
+
+### Tabla Maestra de Periféricos y Conflictos de Multiplexación
+
+| Bus | Módulo Periférico | Función Principal | Pines por Defecto | Pines con Remapeo (Remap) | ⚠️ Periféricos en Conflicto Directo (Mismos Pines) |
+|---|---|---|---|---|---|
+| APB2 | USART1 | Puerto Serie (Tu config) | PA9 (TX), PA10 (RX) | PB6 (TX), PB7 (RX) | TIM1_CH2 / TIM1_CH3 (Si activas estos canales de PWM en PA9/PA10, rompes el USART1). |
+| APB2 | TIM1 | Motor Control | PA8..PA11, PB12..PB15 | PE7..PE15 | USART1 (En PA9/PA10). |
+| APB2 | TIM8 | Motor Control | PC6, PC7, PC8, PC9 | No tiene remapeo | USART3 (Si usas el remapeo parcial de USART3 a PC10/PC11, físicamente están uno al lado del otro en el silicio, cuidado con ruido). |
+| APB2 | SPI1 | Bus SPI Alta Vel. | PA5, PA6, PA7 | PB3, PB4, PB5 | ADC12_IN5/IN6/IN7 y DAC_OUT2 (PA5). |
+| APB2 | ADC1/2/3 | Conversión Analógica | PA0 a PA7, PB0, PB1, PC0 a PC5 | No se remapean | USART2 (PA2/PA3 comparten líneas analógicas ADC_IN2/IN3). |
+| APB1 | USART2 | Universal Serial Port (Tu config) | PA2 (TX), PA3 (RX) | PD5 (TX), PD6 (RX) | TIM2_CH3 / TIM2_CH4 y TIM5_CH3 / TIM5_CH4 y ADC12_IN2/IN3. (Si usas el pin físico para el timer, destruyes la comunicación). |
+| APB1 | USART3 | Universal Serial Port (Tu config) | PB10 (TX), PB11 (RX) | PC10/PC11 (Partial) PD8/PD9 (Full) | I2C2 (SCL/SDA usan exactamente PB10/PB11 por defecto. Si activas I2C2, el USART3 muere). TIM2 (Si haces Partial Remap 1 de TIM2, se muda aquí). |
+| APB1 | TIM2 | General-Purpose Timer (Tu Millis) | PA0, PA1, PA2, PA3 | Múltiples (PA15, PB3, PB10, PB11) | USART2 (Por defecto en PA2/PA3) USART3 (Si usas remapeo de TIM2 a PB10/PB11). |
+| APB1 | I2C1 / I2C2 | Interfaz I2C | PB6, PB7 (I2C1) PB10, PB11 (I2C2) | PB8, PB9 (Solo I2C1) | USART3 (Conflicto total y crítico en PB10/PB11 con I2C2). |
+| APB1 | UART4 / UART5 | Puertos Serie Básicos | PC10/PC11 (U4) PC12/PD2 (U5) | No tiene remapeo | USART3 (Si remapeas USART3 a PC10/PC11, colisiona con UART4). SPI3 (Usa PC10/PC11/PC12 en su remapeo). |
+| APB1 | CAN1 | Bus Automotriz | PA11 (RX), PA12 (TX) | PB8/PB9 o PD0/PD1 | USB (Comparte exactamente PA11/PA12. No puedes usar USB y CAN al mismo tiempo en pines nativos). |
+| APB1 | USB | Puerto USB 2.0 | PA11 (DM), PA12 (DP) | Pines fijos | CAN1 (Mismo conflicto físico que el anterior). |
+| AHB | SDIO | Lector Tarjetas SD | PC8 a PC12, PD2 | Ruteado fijo | UART4, UART5 y SPI3 (Todos pelean por las líneas altas del Puerto C si intentas usarlos a la vez). |
+
+
 ### `SysInit()` — Secuencia de arranque
 
 ```c
