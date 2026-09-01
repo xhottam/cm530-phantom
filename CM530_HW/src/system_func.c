@@ -320,7 +320,7 @@ void ISR_Delay_Base(void) {
 	}
 }
 
-void TimerInterrupt_1ms(void) //OLLO CONTROL
+/**void TimerInterrupt_1ms(void) //OLLO CONTROL
 {
 	if (TIM_GetITStatus(TIM2, TIM_IT_CC1) != RESET) // 1ms//
 	{
@@ -334,5 +334,15 @@ void TimerInterrupt_1ms(void) //OLLO CONTROL
 		if(gw1msCounter > 0)
 			gw1msCounter--;
 	}
+}*/
+void TimerInterrupt_1ms(void)
+{
+    if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
+    {
+        Millis_TIM2++;
+        if (gw1msCounter > 0)
+            gw1msCounter--;
+        TIM_ClearITPendingBit(TIM2, TIM_IT_Update);  // al final, tras escribir contadores
+    }
 }
 

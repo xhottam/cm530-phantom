@@ -158,7 +158,7 @@ void NVIC_Configuration(void) {
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-
+	NVIC_Init(&NVIC_InitStructure);
 
 	// Enable the TIM2 gloabal Interrupt
 	NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQChannel;
@@ -412,7 +412,7 @@ void SysTick_Configuration(void) {
 }
 
 
-void Timer_Configuration(void)
+/**void Timer_Configuration(void)
 {
 	TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
 	TIM_OCInitTypeDef  TIM_OCInitStructure;
@@ -444,6 +444,28 @@ void Timer_Configuration(void)
 
 	// TIM IT enable
 	TIM_ITConfig(TIM2, TIM_IT_CC1, ENABLE);
+
+	// TIM2 enable counter
+	TIM_Cmd(TIM2, ENABLE);
+}*/
+void Timer_Configuration(void)
+{
+	TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
+
+	TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
+
+	TIM_DeInit(TIM2);
+
+	// Time base configuration
+	TIM_TimeBaseStructure.TIM_Period = 999;
+	TIM_TimeBaseStructure.TIM_Prescaler = 71;
+	TIM_TimeBaseStructure.TIM_ClockDivision = 0;
+	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+
+	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
+
+	// TIM IT enable
+	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
 
 	// TIM2 enable counter
 	TIM_Cmd(TIM2, ENABLE);

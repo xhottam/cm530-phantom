@@ -1084,7 +1084,7 @@ void TerminalMonitor(void)
 }
 void setupPhoenix() {
 
-	while (getMillis_TIM2() < 3000);
+	while (getMillis_TIM2() < 6000);
 
 	//if (!g_InControlState.from_TerminalMonitor){
 		zgb_PrintString("##################################\n");

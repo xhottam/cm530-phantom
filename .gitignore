@@ -1,0 +1,7 @@
+CM530.bin
+CM530.elf
+CM530.elf.map
+CM530.hex
+CM530.lss
+*.o
+stm32f10x_lib/libstm32.a

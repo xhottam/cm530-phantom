@@ -36,7 +36,8 @@
 // Serial/PC_UART platform dependent source
 //##############################################################################
 //##############################################################################
-#define PC_UART_BUFFER_LENGTH           32
+//#define PC_UART_BUFFER_LENGTH           32
+#define PC_UART_BUFFER_LENGTH             1023
 
 static volatile u16 gbPcuWrite, gbPcuRead;
 static volatile u8 gbpPcuBuffer[PC_UART_BUFFER_LENGTH+1] = { 0 };
