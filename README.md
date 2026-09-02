@@ -1006,7 +1006,7 @@ el punto de anclaje de cada coxa.
 
 **Modelo geométrico:**
 ```
-[Coxa joint] ── Coxa (52 mm) ── [Femur joint] ── Fémur (66 mm) ── [Tibia joint] ── Tibia (113 mm) ── [PIE]
+[Coxa joint] ── Coxa (52 mm) ── [Femur joint] ── Fémur (66 mm) ── [Tibia joint] ── Tibia (131 mm) ── [PIE]
 ```
 
 **Cálculo (aritmética entera con tablas Flash):**
