@@ -221,7 +221,7 @@
 //Universal dimensions for each leg in mm
 #define cXXCoxaLength     52   // PhantomX leg dimensions.
 #define cXXFemurLength    66 //66  MEASURE THIS!!! Guessed now :-)
-#define cXXTibiaLength    113// 118  MEASURE THIS!!! Guessed now :-)
+#define cXXTibiaLength    131 //113// 118  MEASURE THIS!!! Guessed now :-)
 
 #define cRRCoxaLength     cXXCoxaLength	    //Right Rear leg
 #define cRRFemurLength    cXXFemurLength
