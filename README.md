@@ -1193,7 +1193,7 @@ do { DoBackgroundProcess(); } while (getMillis_TIM2() < lTimerStart + PrevServoM
 ```c
 #define cXXCoxaLength    52
 #define cXXFemurLength   66
-#define cXXTibiaLength  113
+#define cXXTibiaLength  131
 ```
 
 ### Geometría del cuerpo
@@ -1286,7 +1286,7 @@ do { DoBackgroundProcess(); } while (getMillis_TIM2() < lTimerStart + PrevServoM
 ```c
 #define cXXCoxaLength    52    // medir en mm
 #define cXXFemurLength   66
-#define cXXTibiaLength  113
+#define cXXTibiaLength  131
 ```
 
 ### Cambiar protección de batería
